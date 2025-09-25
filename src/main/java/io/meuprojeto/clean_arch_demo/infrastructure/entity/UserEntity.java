@@ -22,14 +22,6 @@ public class UserEntity {
         this.email = user.getEmail();
     }
 
-    public User toDomain(){
-        return new User(id, nome, email);
-    }
-
-    public UserResponseDto toDto(){
-        return new UserResponseDto(id, nome, email);
-    }
-
     public Long getId() {
         return id;
     }

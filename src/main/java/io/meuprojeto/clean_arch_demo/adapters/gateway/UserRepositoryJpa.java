@@ -4,8 +4,6 @@ import io.meuprojeto.clean_arch_demo.domain.model.User;
 import io.meuprojeto.clean_arch_demo.domain.repository.UserRepository;
 import io.meuprojeto.clean_arch_demo.infrastructure.entity.UserEntity;
 import io.meuprojeto.clean_arch_demo.infrastructure.repository.JpaUserCrudRepository;
-import io.meuprojeto.clean_arch_demo.usecase.dto.UserResponseDto;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,19 +18,19 @@ public class UserRepositoryJpa implements UserRepository {
 
     @Override
     public User save(User user) {
-        UserEntity entity = jpaRepository.save(new UserEntity(user));
-        return entity.toDomain();
+        UserEntity entity = jpaRepository.save(UserEntityMapper.toUserEntity(user));
+        return UserEntityMapper.toDomain(entity);
     }
 
     @Override
     public Optional<User> findById(Long id) {
-        return jpaRepository.findById(id).map(UserEntity::toDomain);
+        return jpaRepository.findById(id).map(UserEntityMapper::toDomain);
     }
 
     @Override
     public List<User> findAll() {
         List<UserEntity> entities = jpaRepository.findAll();
-        return entities.stream().map(UserEntity::toDomain).toList();
+        return entities.stream().map(UserEntityMapper::toDomain).toList();
     }
 
     @Override
