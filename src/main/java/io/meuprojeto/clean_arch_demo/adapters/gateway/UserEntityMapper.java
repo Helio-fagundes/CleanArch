@@ -2,8 +2,6 @@ package io.meuprojeto.clean_arch_demo.adapters.gateway;
 
 import io.meuprojeto.clean_arch_demo.domain.model.User;
 import io.meuprojeto.clean_arch_demo.infrastructure.entity.UserEntity;
-import io.meuprojeto.clean_arch_demo.usecase.dto.UserRequestDto;
-import io.meuprojeto.clean_arch_demo.usecase.dto.UserResponseDto;
 
 public class UserEntityMapper {
 
