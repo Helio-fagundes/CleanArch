@@ -1,7 +1,7 @@
 package io.meuprojeto.clean_arch_demo.usecase.deleteUser;
 
 import io.meuprojeto.clean_arch_demo.domain.repository.UserRepository;
-import io.meuprojeto.clean_arch_demo.usecase.exceptions.NotExistingUserException;
+import io.meuprojeto.clean_arch_demo.usecase.exceptions.NotExistUserException;
 
 public class DeleteUserUseCase {
 
@@ -13,7 +13,7 @@ public class DeleteUserUseCase {
 
     public String execute(Long id) {
         if (!repository.findById(id).isPresent()) {
-            throw new NotExistingUserException("User with ID (" + id + ") does not exist.");
+            throw new NotExistUserException("User with ID (" + id + ") does not exist.");
         }
         repository.deleteById(id);
         return "User with ID (" + id + ") has been deleted.";
