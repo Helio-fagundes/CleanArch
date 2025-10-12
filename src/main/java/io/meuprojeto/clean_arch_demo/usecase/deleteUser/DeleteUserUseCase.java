@@ -12,7 +12,7 @@ public class DeleteUserUseCase {
     }
 
     public String execute(Long id) {
-        if (!repository.findById(id).isPresent()) {
+        if (repository.findById(id).isEmpty()) {
             throw new NotExistUserException("User with ID (" + id + ") does not exist.");
         }
         repository.deleteById(id);
