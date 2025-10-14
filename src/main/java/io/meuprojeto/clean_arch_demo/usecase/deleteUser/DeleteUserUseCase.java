@@ -12,6 +12,9 @@ public class DeleteUserUseCase {
     }
 
     public String execute(Long id) {
+        if(id == null){
+            throw new IllegalArgumentException("ID cannot be null.");
+        }
         if (repository.findById(id).isEmpty()) {
             throw new NotExistUserException("User with ID (" + id + ") does not exist.");
         }
